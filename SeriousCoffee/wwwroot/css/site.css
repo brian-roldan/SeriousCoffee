@@ -1,0 +1,12 @@
+﻿body {
+    background-color: #FAFAFA;
+}
+
+.box {
+    border: solid;
+    padding: 50px;
+}
+
+.box-title {
+    margin-bottom: 20px;
+}

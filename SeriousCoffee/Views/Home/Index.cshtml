@@ -1,0 +1,71 @@
+﻿<div id="main-container" class="container-fluid">
+    <div class="row">
+        <div id="order-coffee-box" class="box col-xs-12 col-sm-6" ng-controller="OrderCoffeeController as orderCoffee">
+            <h1 class="box-title display-4">Order Coffee</h1>
+            <div class="text-center m-5">
+                <form name="orderCoffeeForm" novalidate ng-submit="orderCoffeeForm.$valid && orderCoffee.orderCoffee()">
+                    <div class="form-group">
+                        <select name="coffee_order_id" required ng-model="orderCoffee.coffeeOrderId" class="form-control">
+                            <option value="" selected>Please select a drink</option>
+                            <option ng-repeat="coffeeOption in orderCoffee.coffeeOptions" value="{{coffeeOption.id}}">{{coffeeOption.name}}</option>
+                        </select>
+                        <span style="color:red" ng-show="orderCoffeeForm.$submitted && orderCoffeeForm.coffee_order_id.$error.required">Please select a drink first.</span>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Order Coffee" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="order-history-box" class="box col-xs-12 col-sm-6" ng-controller="OrderHistoryController as orderHistory">
+            <h1 class="box-title display-4">Order History</h1>
+            <table datatable="ng" dt-options="orderHistory.dtOptions" id="order-history-table" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Drink</th>
+                        <th>Date Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="coffeeOrder in orderHistory.coffeeOrders">
+                        <td>{{ coffeeOrder.coffeeName }}</td>
+                        <td>{{ coffeeOrder.orderDateTimeString }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div id="stocks-box" class="box col-xs-12 col-sm-6" ng-controller="StocksController as stocks">
+            <h1 class="box-title display-4">Stocks</h1>
+            <div>
+                <canvas class="chart chart-bar" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
+            </div>
+            <form name="addStockForm" ng-submit="addStockForm.$valid && stocks.addStocks()" class="form-horizontal mt-2" novalidate>
+                <div class="form-row">
+                    <div class="col-6">
+                        <select name="ingredient_id" ng-model="stocks.ingredientId" class="form-control" required>
+                            <option value="" selected>Please select an ingredient</option>
+                            <option ng-repeat="ingredient in stocks.ingredientOptions" value="{{ingredient.id}}">{{ingredient.name}}</option>
+                        </select>
+                        <span style="color:red" ng-show="addStockForm.$submitted && addStockForm.ingredient_id.$error.required">Please select an ingredient.</span>                        
+                    </div>
+                    <div class="col-4">
+                        <input name="container_count" ng-model="stocks.containerCount" class="form-control" type="number" min="1" ng-min="1" placeholder="Containers" required />
+                        <span style="color:red" ng-show="addStockForm.$submitted && addStockForm.container_count.$error.required">Please indicate how many containers.</span>
+                        <span style="color:red" ng-show="addStockForm.$submitted && addStockForm.container_count.$error.min">Please enter a value higher than zero.</span>
+                    </div>
+                    <div class="col-2">
+                        <input class="btn btn-success" type="submit" value="Add Stock" />
+                    </div>
+                </div>
+</form>
+        </div>
+        <div id="coffee-distribution-box" class="box col-xs-12 col-sm-6" ng-controller="OrderHistoryController as orderHistory">
+            <h1 class="box-title display-4">Coffee Distribution</h1>
+            <div>
+                <canvas class="chart chart-bar" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
