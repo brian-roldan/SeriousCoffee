@@ -1,7 +1,7 @@
 ﻿<div id="main-container" class="container-fluid" style="background: #8e47c4">
     <div class="row">
         <div id="order-coffee-box" class="box col-xs-12 col-sm-6" ng-controller="OrderCoffeeController as orderCoffee">
-            <h1 class="box-title display-4">Order Coffee</h1>
+            <h1 class="box-title display-4">Order Coffee Division</h1>
             <div class="text-center m-5">
                 <form name="orderCoffeeForm" novalidate ng-submit="orderCoffeeForm.$valid && orderCoffee.orderCoffee()">
                     <div class="form-group">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div id="order-history-box" class="box col-xs-12 col-sm-6" ng-controller="OrderHistoryController as orderHistory">
-            <h1 class="box-title display-4">Order History</h1>
+            <h1 class="box-title display-4">Order History Division</h1>
             <table datatable="ng" dt-options="orderHistory.dtOptions" id="order-history-table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -37,7 +37,7 @@
     </div>
     <div class="row">
         <div id="stocks-box" class="box col-xs-12 col-sm-6" ng-controller="StocksController as stocks">
-            <h1 class="box-title display-4">Stocks</h1>
+            <h1 class="box-title display-4">Stocks Division</h1>
             <div>
                 <canvas class="chart chart-bar" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
             </div>
@@ -62,7 +62,7 @@
 </form>
         </div>
         <div id="coffee-distribution-box" class="box col-xs-12 col-sm-6" ng-controller="OrderHistoryController as orderHistory">
-            <h1 class="box-title display-4">Coffee Distribution</h1>
+            <h1 class="box-title display-4">Coffee Distribution Division</h1>
             <div>
                 <canvas class="chart chart-bar" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
             </div>
